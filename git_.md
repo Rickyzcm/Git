@@ -3,23 +3,24 @@
  + 可运行平台：Linux、Unix、Mac、Windows
  + 开发语言背景：C语言
 
-## 一般与github联动步骤
+## 与github联动操作
+### 操作步骤
 + 准备工作
   - 自己的github账号
   - 已经安装好Git软件的本地计算机
    
-1. 登录github，创建一个新的repository，建立新项目后进入项目内，将url地址复制
+1. 登录github，创建一个新的repository，建立新项目后进入项目内，将url地址复制。
 
-1. 初始化一个 git 仓库：打开 Git Bash 窗口，先进入选定作为本地仓库的文件夹内，输入命令`git init`，将所在文件夹变成Git可以管理的仓库,文件路径就会存在一个隐藏的.git文件
+1. 初始化一个 git 仓库：打开 Git Bash 窗口，先进入选定作为本地仓库的文件夹内，输入命令`git init`，将所在文件夹变成Git可以管理的仓库,文件路径就会存在一个隐藏的.git文件。
 
-1. 在本地仓库文件夹路径下输入命令`git clone `将github的仓库中项目结构分支克隆到本地仓库中
+1. 在本地仓库文件夹路径下输入命令`git clone `将github的仓库中项目结构分支克隆到本地仓库中。
 
-1. 将需要上传的项目文件夹拷贝至含有隐藏文件后缀名为`.git`文件的同一路径下
+1. 将需要上传的项目文件夹拷贝至含有隐藏文件后缀名为`.git`文件的同一路径下。
 
-1. 输入命令`git add . ` 此语句就是讲当前目录下所有修改过的文件以及所有子目录下修改过的文件进行提交 
+1. 输入命令`git add . ` 此语句就是讲当前目录下所有修改过的文件以及所有子目录下修改过的文件进行提交。
 
-1. 输入命令`git commit -m "注释信息"`(提交到本地的版本控制库内，引号内是注释信息，选填)
-   **控制台输出结果**  
+1. 输入命令`git commit -m "注释信息"`(提交到本地的版本控制库内，引号内是注释信息，选填)  
+   *控制台输出*
    ```bash
     $ git commit -m "注释内容"
     [master 00db313] 注释内容
@@ -29,7 +30,7 @@
    ```
 
 1. 输入`git push -u origin master`  
-   **控制台输出结果**
+   *控制台输出*
    ```bash
     Counting objects: 3, done.
     Delta compression using up to 4 threads.
@@ -42,9 +43,8 @@
 以上即可对远程库进行提交更新
 
 
-## 可能出现的问题
-#### 请确保git的工作路径不包含中文
-    在使用windows工作环境下，含有中文字符的工作路径总是会存在各种莫名奇妙的问题，所以请确保在git工作路径不含有中文
+### 可能遇到的问题
+
 #### 本地分支与与远程仓库断联 
 ##### 控制台显示
 ```
@@ -53,15 +53,15 @@ fatal: 'origin' does not appear to be a git repository
 fatal: Could not read from remote repository.
 ```  
 
-##### *解决方案*  
+##### 解决方案
   1. 输入`git remote -v`查看本地分支的上游，若什么都没输出，则证实断连
-  1. 输入`git remote add origin git@github:***github项目url***.git`   
+  1. 输入`git remote add origin git@github:[***github项目url***].git`   
 
-##### *效果输出*
- ```
-    $ git remote -v 
-    origin  git@github:xxxx/******.git (fetch)
-    origin  git@github:xxxx/******.git (push)
+##### 输出效果
+ ```bash
+ $ git remote -v 
+ origin  git@github:xxxx/******.git (fetch)
+ origin  git@github:xxxx/******.git (push)
  ```
 
 #### git push 之后在 github 上并未更新
@@ -72,9 +72,48 @@ fatal: Could not read from remote repository.
      ```
      github上的仓库内文件并没有改变！
 ##### 原因
-   + `git add .` 语句之后缺少 commit 步骤，暂存区内的文件更新还未提交给本地版本库。
+   + `git add .` 语句之后没有经过 commit 步骤，暂存区内的文件更新还未提交给本地版本库。
 ##### 解决方案
-   + 继续执行`git commit -m`语句更新本地库
+   + 继续执行`git commit -m`语句更新本地库  
+
+####  git_远程库和本地库重命名  
+
+##### 描述
+   >  当需要在github上重命名仓库的时候,思考一下就可发现github上仓库重命名之后，计算机上的本地仓库并不会联动地重命名，那么在之后的pull和push等其他操作必然后有影响
+##### 操作步骤
+   1. 先在Git Bash窗口中查看当前远程库和本地库的情况：输入 
+      ```bash
+      git remote -v
+      ```  
+
+      **输出效果**
+      ```bash
+      $ git remote -v
+      origin  git@github.com:Rickyzcm/Git.git (fetch)
+      origin  git@github.com:Rickyzcm/Git.git (push)
+      ```
+      > 其中 origin 就是 Git本地仓库指向远程库的一个本地标识
+
+   1. 在本地仓库中删除远程仓库，输入 
+      ```bash
+      git remote rm origin
+      ``` 
+      **输出效果**  
+      (无输出)
+      > 此时当前的远程仓库删除完毕
+   
+   1. 进入 github 主页中的目标仓库操作详情页，点击`setting`标签进入仓库设置详情，将 Repository name 输入框内值修改，并保存(建议本地库的文件夹名称也改一下)
+
+
+
+
+
+
+### 注意事项
+
+#### 请确保git的工作路径不包含中文
+    在使用windows工作环境下，含有中文字符的工作路径总是会存在各种莫名奇妙的问题，所以请确保在git工作路径不含有中文
+
 
 ## git 命令集合
 ```bash
