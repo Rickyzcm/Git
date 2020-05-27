@@ -41,7 +41,6 @@
         8c0d44a..c2bd4f2  master -> master
    ```
 以上即可对远程库进行提交更新
-> 
 
 
 ### 可能遇到的问题
@@ -115,17 +114,16 @@ fatal: Could not read from remote repository.
       ```
 
 
-
-
 ### 注意事项
 
 #### 请确保git的工作路径不包含中文
     在使用windows工作环境下，含有中文字符的工作路径总是会存在各种莫名奇妙的问题，所以请确保在git工作路径不含有中文
 
+## 如何使用 `Git` 删除文件
 
 ## git 命令集合
 ```bash
-+ git add 文件名 
++ git add <文件名> 添加单个文件(也可以重复多次使用，即添加多个文件) 
 
 + git config user.name 查看用户名
 + git config user.email 查看用户邮箱地址
@@ -135,10 +133,9 @@ fatal: Could not read from remote repository.
 + git branch 查看本地分支
 + git branch -a 查看所有分支
 
-+ git commit 
++ git commit  将暂存区内容提交本地版本库
 + git commit -m "本次提交的说明" 待备注的提交版本库
 + git commit --amend 查看最近的log信息
 
 +  git branch --unset-upstream
-
 ```
