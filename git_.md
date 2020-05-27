@@ -41,6 +41,7 @@
         8c0d44a..c2bd4f2  master -> master
    ```
 以上即可对远程库进行提交更新
+> 
 
 
 ### 可能遇到的问题
@@ -104,7 +105,14 @@ fatal: Could not read from remote repository.
    
    1. 进入 github 主页中的目标仓库操作详情页，点击`setting`标签进入仓库设置详情，将 Repository name 输入框内值修改，并保存(建议本地库的文件夹名称也改一下)
 
-
+##### 可能遇到的问题
+   + `git pull`之后控制台输出  
+      ```bash
+      $ git pull
+      Auto-merging README.md
+      CONFLICT (content): Merge conflict in README.md
+      Automatic merge failed; fix conflicts and then commit the result.
+      ```
 
 
 
