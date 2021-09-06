@@ -95,7 +95,7 @@ fatal: Could not read from remote repository.
 + git commit -m "本次提交的说明" 待备注的提交版本库
 + git commit --amend 查看最近的log信息
 
-+  git branch --unset-upstream
++ git branch --unset-upstream
 
 ```
 >>>>>>> caca1410bf258738766b71be0b1c6b9d1b157037
